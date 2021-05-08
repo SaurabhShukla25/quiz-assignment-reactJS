@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.timerRedAlert{
+  font-weight: 600;
+  color:  rgb(209, 74, 74);
+}
+.timerNormal{
+  color: rgb(10, 148, 95);
+  font-weight: 600;
+}

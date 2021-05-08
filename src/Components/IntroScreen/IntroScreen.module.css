@@ -1,0 +1,38 @@
+.screenContainer{
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 15px;
+}
+.screenInnerContainer{
+    padding: 30px;
+    box-shadow: 1px 1px 10px 1px #dddd;
+    width: 70%;
+    border-radius: 10px;
+    text-align: center;
+}
+.descriptionQuiz{
+    text-align: left;
+}
+.inputGroup {
+    margin-bottom: 10px;
+}
+.inputGroup> span{
+    margin-right: 10px;
+}
+.startButton>button:disabled{
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.startButton button{
+    background-color: rgb(47, 152, 212);
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid;
+    cursor: pointer;
+}
+.startButton button:hover{
+    transform: scale(1.01) ;
+    transition: transform 0.1s ease;
+}

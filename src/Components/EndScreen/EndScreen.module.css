@@ -1,0 +1,29 @@
+.screenContainer{
+    display: flex;
+    justify-content: center;
+    
+    padding: 15px;
+}
+.screenInnerContainer{
+    padding: 30px;
+    box-shadow: 1px 1px 10px 1px #dddd;
+    width: 70%;
+    border-radius: 10px;
+    text-align: center;
+}
+.actionBtns{
+    margin-top: 20px;
+}
+.actionBtns button{
+    background-color: rgb(47, 152, 212);
+    color: white;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.actionBtns button:hover{
+    transform: scale(1.01) ;
+    transition: transform 0.1s ease;
+}
