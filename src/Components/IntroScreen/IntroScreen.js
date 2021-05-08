@@ -30,7 +30,7 @@ const IntroScreen = ({handleStartButton,difficultySelected,handleDifficulty})=>{
                         </span>
                         
                     </div>
-                    <div onClick={handleStartButton} className = {classes.startButton}><button disabled={!difficultySelected} type="button">Start Button</button></div>
+                    <div onClick={handleStartButton} className = {classes.startButton}><button disabled={!difficultySelected} type="button">Start</button></div>
                 </div>
             </div>
         </div>
