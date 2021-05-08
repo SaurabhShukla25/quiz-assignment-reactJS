@@ -7,19 +7,19 @@ const EndScreen = ({answersMarked,setActiveScreen,setQuestionBank,setAnswersMark
         let correctAnswers = answersMarked.filter(eachAnswerObj=>eachAnswerObj.answerMarked === eachAnswerObj.correct_answer);
         setTotalScore(correctAnswers?.length ?? 0);
 
-        return ()=>{
+        return ()=>{ //To clear required values on unmounting.
             
-            setAnswersMarked([]);
-            setActiveQuestionID(0);
+            setAnswersMarked([]);//empties the users respponses
+            setActiveQuestionID(0);//making the first question in the array to be displayed if question screen is accessed.
         }
         
     }, []);
-    const handleStartOver=()=>{
+    const handleStartOver=()=>{// If user starts over, it should clear the question bank and the app should render the intro screen again
         setQuestionBank([]);
         setActiveScreen(1);
         
     }
-    const handleStartSame = ()=>{
+    const handleStartSame = ()=>{// lets user to attempt the same quiz again, by redirecting him back to the questionscreen
         setActiveScreen(2);
     }
     return(

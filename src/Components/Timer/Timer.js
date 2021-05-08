@@ -5,20 +5,20 @@ const Timer = ({seconds,resetTimer,pauseTimer,timeElapsedFunc,timerResetSuccess}
     clearTimeout(timer)
     useEffect(() => {
         if(counter>0 && !pauseTimer){
-            timer = setTimeout(()=>setCounter(counter=>counter-1),1000);
+            timer = setTimeout(()=>setCounter(counter=>counter-1),1000);// Reduces the second by one.
         }
        
     });
     useEffect(()=>{
         if(counter===0){
-            timeElapsedFunc()
+            timeElapsedFunc() // calling the callback function passed through props when the time is elapsed.
         }
     },[counter])
     useEffect(()=>{
         if(resetTimer){
-            setCounter(seconds);
+            setCounter(seconds); // resets the timer to the mentioned time in seconds prop of the component
         }
-        timerResetSuccess()
+        timerResetSuccess()// toggles the reset value in the main component
     },[resetTimer])
     
     

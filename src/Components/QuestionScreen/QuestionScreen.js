@@ -7,8 +7,8 @@ const QuestionScreen = ({setActiveScreen,setActiveQuestion,questionData,activeQu
     const [timerProps,setTimerProps] = useState({pauseTimer:false,resetTimer:true})
     useEffect(() => {
 
-        resetForm();
-        filterQuestion(activeQuestionID);
+        resetForm(); // enabling the input field for the new question   after the previous question is answered.
+        filterQuestion(activeQuestionID);// to get the next question from question bank array.
 
     }, [activeQuestionID]);
 
@@ -22,25 +22,26 @@ const QuestionScreen = ({setActiveScreen,setActiveQuestion,questionData,activeQu
         
     }
     const setNextView = ()=>{
+        // if questions are still present in the array
         if(activeQuestionID<questionData.length-1){
-            setActiveQuestion(prevState=>prevState+1)
-            setTimerProps({resetTimer:true,pauseTimer:false})
+            setActiveQuestion(prevState=>prevState+1)// sets next question
+            setTimerProps({resetTimer:true,pauseTimer:false})// resets the timer for next question
 
         }else{
-            setActiveScreen(3)
+            setActiveScreen(3) // if all questions has been displayed from thr array, takes the user to next screen, by setting the next active screen
         }
     }
-    const handleAnswerInput = (e)=>{
+    const handleAnswerInput = (e)=>{ // handles user's selected answer.
         
         setAnswer(prevState =>
             [...prevState,
                 {question:filteredQuestion.question,answerMarked:e.target.value,correct_answer:filteredQuestion.correct_answer}
-            ]);
-            setDisableInput(true);
-            setTimerProps(prevState=>({...prevState,pauseTimer:true}))
-            setTimeout(setNextView,3000);
+            ]); // adding the marked answer to answers array along with other metadata.
+            setDisableInput(true); // Freeze the input field if answer is marked.
+            setTimerProps(prevState=>({...prevState,pauseTimer:true}))// Pauses the timer.
+            setTimeout(setNextView,3000);//Wait for user to read the answer marked and if the answer was correct or not. 
     }
-    const setClass = (choice)=>{
+    const setClass = (choice)=>{// This function sets class dynamically. if selected answer is correct sets with "isCorrect" class, if incorrect sets with "incorrect" class, along with a default class "eachOption"
         if(disableInput && answersMarked[activeQuestionID]){
             if(answersMarked[activeQuestionID]?.correct_answer === choice)
                 return `${classes.eachOption} ${classes.isCorrect}`
@@ -53,15 +54,15 @@ const QuestionScreen = ({setActiveScreen,setActiveQuestion,questionData,activeQu
         
     }
     const timeElapsed = ()=>{
-        setDisableInput(true)
+        setDisableInput(true)// freeze the input, since time is elapsed
         setAnswer(prevState =>
             [...prevState,
                 {question:filteredQuestion.question,answerMarked:null,correct_answer:filteredQuestion.correct_answer}
-            ]);
-        setTimeout(setNextView,3000);
+            ]);// if not marked already, sets the null in answers array
+        setTimeout(setNextView,3000);// wait for user to read the correct answer and then moves to next screen
     }
     const switchResetToFalse = ()=>{
-        setTimerProps(prevState=>({...prevState,resetTimer:false}))
+        setTimerProps(prevState=>({...prevState,resetTimer:false})) //After the timer is resetted, making the resetTimer state to false again.
     }
     return(
         <div className={classes.screenContainer}>
